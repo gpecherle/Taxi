@@ -1,4 +1,4 @@
-var serviceURL = "http://localhost/directory/services/";
+var serviceURL = "http://www.ionutgavris.com/mobile/phonegap-apps/taxi/";
 
 var employees;
 
@@ -7,15 +7,15 @@ $('#employeeListPage').bind('pageinit', function(event) {
 });
 
 function getEmployeeList() {
-	$.getJSON(serviceURL + 'getemployees.php', function(data) {
+	$.getJSON(serviceURL + 'load-taxi-phones.php', function(data) {
 		$('#employeeList li').remove();
-		employees = data.items;
-		$.each(employees, function(index, employee) {
-			$('#employeeList').append('<li><a href="employeedetails.html?id=' + employee.id + '">' +
-					'<img src="pics/' + employee.picture + '"/>' +
-					'<h4>' + employee.firstName + ' ' + employee.lastName + '</h4>' +
-					'<p>' + employee.title + '</p>' +
-					'<span class="ui-li-count">' + employee.reportCount + '</span></a></li>');
+		companies = data;
+		$.each(companies, function(index, company) {
+			$('#employeeList').append('<li><a href="employeedetails.html?id=' + company.id + '">' +
+					'<img src="pics/' + company.nume + '"/>' +
+					'<h4>' + company.nume + '</h4>' +
+					'<p>' + company.nume + '</p>' +
+					'<span class="ui-li-count">' + company.nume + '</span></a></li>');
 		});
 		$('#employeeList').listview('refresh');
 	});
