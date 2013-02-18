@@ -12,10 +12,9 @@ function getEmployeeList() {
 		companies = data;
 		$.each(companies, function(index, company) {
 			$('#employeeList').append('<li><a href="employeedetails.html?id=' + company.id + '">' +
-					'<img src="pics/' + company.nume + '"/>' +
+					'<img src="pics/' + company.poza + '"/>' +
 					'<h4>' + company.nume + '</h4>' +
-					'<p>' + company.nume + '</p>' +
-					'<span class="ui-li-count">' + company.nume + '</span></a></li>');
+					'<p>' + company.descriere + '</p></a></li>');
 		});
 		$('#employeeList').listview('refresh');
 	});
