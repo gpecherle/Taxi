@@ -1,17 +1,19 @@
 $('#detailsPage').live('pageshow', function(event) {
 	var id = getUrlVars()["id"];
-	$.getJSON(serviceURL + 'getemployee.php?id='+id, displayEmployee);
+	$.getJSON(serviceURL + 'load-taxi-phones.php?id='+id, displayEmployee);
 });
 
 function displayEmployee(data) {
-	var employee = data.item;
+	var employee = data;
 	console.log(employee);
-	$('#employeePic').attr('src', 'pics/' + employee.picture);
-	$('#fullName').text(employee.firstName + ' ' + employee.lastName);
-	$('#employeeTitle').text(employee.title);
-	$('#city').text(employee.city);
-	console.log(employee.officePhone);
-	if (employee.managerId>0) {
+	$('#employeePic').attr('src', 'pics/' + employee.poza);
+	$('#fullName').text(employee.nume);
+	//$('#employeeTitle').text(employee.title);
+	//$('#city').text(employee.city);
+	//console.log(employee.officePhone);
+	$('#actionList').append('<li><a href="tel:' + employee.telefon + '"><h3>Suna acum</h3>' +
+				'<p>' + employee.telefon + '</p></a></li>');
+	/* if (employee.managerId>0) {
 		$('#actionList').append('<li><a href="employeedetails.html?id=' + employee.managerId + '"><h3>View Manager</h3>' +
 				'<p>' + employee.managerFirstName + ' ' + employee.managerLastName + '</p></a></li>');
 	}
@@ -32,7 +34,7 @@ function displayEmployee(data) {
 				'<p>' + employee.cellPhone + '</p></a></li>');
 		$('#actionList').append('<li><a href="sms:' + employee.cellPhone + '"><h3>SMS</h3>' +
 				'<p>' + employee.cellPhone + '</p></a></li>');
-	}
+	} */
 	$('#actionList').listview('refresh');
 	
 }
