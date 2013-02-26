@@ -1,4 +1,4 @@
-var serviceURL = "http://www.ionutgavris.com/mobile/phonegap-apps/taxi/";
+var serviceURL = "http://www.georgepecherle.com";
 
 var employees;
 
